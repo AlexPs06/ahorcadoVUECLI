@@ -1,5 +1,11 @@
 <template>
+ <v-parallax
+   height="100%"
+    dark
+     src="https://cdn.vuetifyjs.com/images/parallax/material2.jpg"
+  >
   <hello-world />
+   </v-parallax>
 </template>
 
 <script lang="ts">
