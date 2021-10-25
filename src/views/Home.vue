@@ -1,11 +1,8 @@
 <template>
- <v-parallax
-   height="100%"
-    dark
-     src="https://cdn.vuetifyjs.com/images/parallax/material2.jpg"
-  >
+
+  
   <hello-world />
-   </v-parallax>
+   
 </template>
 
 <script lang="ts">
@@ -20,3 +17,11 @@
     },
   })
 </script>
+<style>
+ .bg-image {
+   background-repeat: no-repeat;
+   background-position: center center;
+   background-attachment: fixed;
+   background-size: cover;
+ }
+</style>

@@ -1,6 +1,17 @@
 <template>
-  <v-container>
-    <v-row  class="ma-n3"  >
+   <!-- <v-parallax
+   height="100%"
+    dark
+     src="https://cdn.vuetifyjs.com/images/parallax/material2.jpg"
+.color1 {color: #060606;}
+.color2 {color: #1f272d;}
+.color3 {color: #3e535e;}
+.color4 {color: #608094;}
+.color5 {color: #87b6ce;}
+  > -->
+  <v-container  fluid class="fill-height">
+  
+    <v-row  class="fill-height ma-n3"  >
       
        <v-dialog
        transition="dialog-bottom-transition"
@@ -51,21 +62,22 @@
 
       <!-- Lista de palabras -->
 
-      <v-sheet class="text-center"  color="grey lighten-3" elevation="24" width="20%"    >
+      <v-sheet class="text-center"  color="#87b6ce" elevation="24" width="20%"    >
          
-            <v-card 
+            <v-card color="#608094"
               class="d-flex flex-wrap"
               max-width="100%"
               tile
             >
-              <v-list rounded>
+              <v-list color="#608094" rounded>
                 <v-subheader>Palabras</v-subheader>
                 <v-list-item-group
                   v-model="selectedItem"
-                  color="primary"
+                  color="cyan lighten-2"
+
                 >
                   <v-list-item
-                    v-for="(item, i) in words"
+                    v-for="(item, i) in palabras"
                     :key="i"
                     v-on:click="seleccionarPalabra(i)"
                   >
@@ -84,7 +96,7 @@
 
 
   <!-- Juego del ahorcado -->
-   <v-sheet class="text-center"  color="grey lighten-3" elevation="24" width="80%" height="1000"   style="max-height: 100%;  "  >
+   <v-sheet class="text-center"  color="#87b6ce" elevation="24" width="80%" height="100%"   style="max-height: 100%;  "  >
       <v-col cols="12">
           <!-- :src="require('../assets/'{{foto}}'.jpg')" -->
           <!-- Imagen de que se muere -->
@@ -99,20 +111,24 @@
       <v-col class="mb-4">
         <v-row >
         <v-col class="mb-4"> 
-        <v-text-field
-            
-            class="palabra"
-            placeholder="Introduce la letra"
-            filled
-            v-model="letra"
-            
-          >
-            
-          </v-text-field >
+           <!-- <v-card max-height="60" max-width="200" > -->
+      
+            <v-text-field
+                color="teal lighten-1"
+                class="palabra white--text"
+                placeholder="Introduce la letra"
+                solo
+                v-model="letra"
+              >
+              </v-text-field >
+           <!-- </v-card> -->
         </v-col>
 
           <v-col class="mb-4">
           <v-btn 
+          class="white--text"
+
+          color="blue darken-4"
           v-on:click="checarLetra()"
           :disabled="intentosRestantes==0 || ganar==true "
           elevation="2" >
@@ -122,6 +138,9 @@
 
         <v-col class="mb-4">
           <v-btn 
+          class="white--text"
+
+          color="red darken-4"
           v-on:click="reiniciar()"
           elevation="2" >
             Reiniciar
@@ -147,7 +166,7 @@
           <v-card-title  > {{ trueWord[i]}} </v-card-title>
           </v-card>
 
-          <v-card v-else-if="word[i] == ' ' "  color="gray">
+          <v-card height="65" v-else-if="word[i] == ' ' "  color="#608094">
           <v-card-title  >  </v-card-title>
           </v-card>
 
@@ -219,7 +238,7 @@
         cols="12"
       >
         <h2 class="headline font-weight-bold mb-3">
-          Ecosystem
+          Bioinformatica
         </h2>
 
         <!-- <v-row justify="center">
@@ -239,6 +258,8 @@
 
     </v-row>
   </v-container>
+    <!-- </v-parallax> -->
+
 </template>
 
 <script lang="ts">
@@ -248,6 +269,7 @@
     name: 'HelloWorld',
 
     data: () => ({
+      palabras:["Palabra 1","Palabra 2"],
       words:["bioinformatica","genoma"],
       definiciones:["Sinónimo biología computacional, informática biológica.","Es el conjunto de instrucciones genéticas que se encuentra en una célula"],
       posicion:0,
@@ -303,7 +325,7 @@
           this.$data.ganar=true;
           this.$data.ganarDialog=true;
         }
-        
+        this.$data.letra="";
 
       },
       seleccionarPalabra( i : any){
