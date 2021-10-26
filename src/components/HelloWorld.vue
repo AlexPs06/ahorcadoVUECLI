@@ -13,6 +13,7 @@
   
     <v-row  class="fill-height ma-n3"  >
       
+      
        <v-dialog
        transition="dialog-bottom-transition"
         v-model="ganarDialog"
@@ -35,6 +36,12 @@
             </v-card-actions>
           </v-card>
       </v-dialog>
+
+
+      
+
+       <!-- <tutorial v-if="false"   /> -->
+      
 
       <v-dialog
        transition="dialog-bottom-transition"
@@ -62,30 +69,31 @@
 
       <!-- Lista de palabras -->
 
-      <v-sheet class="text-center"  color="#87b6ce" elevation="24" width="20%"    >
+      <v-sheet class="text-center"  color="#127DE6" elevation="24" width="20%"    >
          
-            <v-card color="#608094"
+            <v-card color="#1C5B99"
               class="d-flex flex-wrap"
               max-width="100%"
               tile
             >
-              <v-list color="#608094" rounded>
-                <v-subheader>Palabras</v-subheader>
+              <v-list color="#1C5B99" rounded>
+                <v-subheader class="text-h4 white--text"  >Palabras</v-subheader>
                 <v-list-item-group
                   v-model="selectedItem"
                   color="cyan lighten-2"
-
+                  
                 >
                   <v-list-item
+                    
                     v-for="(item, i) in palabras"
                     :key="i"
                     v-on:click="seleccionarPalabra(i)"
                   >
-                    <v-list-item-icon>
-                      <v-icon v-on:click="seleccionarPalabra(i)" v-text="'mdi-flag'"></v-icon>
+                    <v-list-item-icon >
+                      <v-icon   v-on:click="seleccionarPalabra(i)" v-text="'mdi-flag'"></v-icon>
                     </v-list-item-icon>
                     <v-list-item-content v-on:click="seleccionarPalabra(i)">
-                      <v-list-item-title  v-text="item"></v-list-item-title>
+                      <v-list-item-title class=" text-h6 white--text"  v-text="item"></v-list-item-title>
                     </v-list-item-content>
                   </v-list-item>
                 </v-list-item-group>
@@ -96,7 +104,7 @@
 
 
   <!-- Juego del ahorcado -->
-   <v-sheet class="text-center"  color="#87b6ce" elevation="24" width="80%" height="100%"   style="max-height: 100%;  "  >
+   <v-sheet class="text-center"  color="#E0E1D7" elevation="24" width="80%" height="100%"   style="max-height: 100%;  "  >
       <v-col cols="12">
           <!-- :src="require('../assets/'{{foto}}'.jpg')" -->
           <!-- Imagen de que se muere -->
@@ -104,7 +112,8 @@
         :src="require('../assets/'+foto)"
           class="my-3"
           contain
-          height="200"
+          height="100%"
+          max-height="600"
         />
       </v-col>
 
@@ -118,6 +127,7 @@
                 class="palabra white--text"
                 placeholder="Introduce la letra"
                 solo
+                x-large="true"
                 v-model="letra"
               >
               </v-text-field >
@@ -127,7 +137,7 @@
           <v-col class="mb-4">
           <v-btn 
           class="white--text"
-
+          x-large="true"
           color="blue darken-4"
           v-on:click="checarLetra()"
           :disabled="intentosRestantes==0 || ganar==true "
@@ -139,7 +149,7 @@
         <v-col class="mb-4">
           <v-btn 
           class="white--text"
-
+          x-large="true"
           color="red darken-4"
           v-on:click="reiniciar()"
           elevation="2" >
@@ -149,8 +159,9 @@
         
         </v-row>
         <!-- palabras dinamicas -->
-        <h1 class="display-2 font-weight-bold mb-3">
-          {{definiciones[posicion]  }}
+        <p class="display-2 font-weight-bold text-h3 mb-lg-10 mb-md-10" > {{definiciones[posicion]  }} </p>
+        <h1 class="display-2 font-weight-bold ma-4">
+         
           <v-row>
           <v-col v-for="(eco, i) in words[posicion]"
             :key="i">
@@ -166,7 +177,7 @@
           <v-card-title  > {{ trueWord[i]}} </v-card-title>
           </v-card>
 
-          <v-card height="65" v-else-if="word[i] == ' ' "  color="#608094">
+          <v-card height="65" v-else-if="word[i] == ' ' "  color="#9C9702">
           <v-card-title  >  </v-card-title>
           </v-card>
 
@@ -177,27 +188,14 @@
           </v-row>  
         </h1>
 
-        <!-- texto de abajo -->
-        <p class="subheading font-weight-regular">
-          Si te interesa este tema y seguir aprendiendo sobre otros,
-          <br>te recomiendo seguirnos en nuestro <a
-            :href="'https://twitter.com/UnPocoDeCienci'"
-            class="subheading mx-3"
-            target="_blank"
-          >
-          <v-icon >{{icons[0]}}  </v-icon>
-             
-             Twitter
-          </a>
-
-        </p>
+        
       </v-col>
-
+    
       <v-col
         class="mb-5"
         cols="12"
       >
-        <h2 class="headline font-weight-bold mb-3">
+        <h2 class="headline font-weight-bold mb-3 text-h4">
           Letras usadas:
         </h2>
 
@@ -205,7 +203,7 @@
           <h3
             
             
-            class="subheading mx-3"
+            class="subheading mx-3 text-h4"
             target="_blank"
           >
             {{ letras }}
@@ -217,29 +215,40 @@
         class="mb-5"
         cols="12"
       >
-        <h2 class="headline font-weight-bold mb-3">
+        <p class="headline font-weight-bold mb-3 text-h4">
           Enlace al material de referencia
-        </h2>
-
+        </p>
         <v-row justify="center">
           <a
             :href="'https://computacion.cs.cinvestav.mx/~aperez/Seminario1/Bioinformatica.pdf'"
-            class="subheading mx-3"
+            class="subheading mx-3 text-h4"
             target="_blank"
           >
              Presentación
              
           </a>
         </v-row>
+        
       </v-col>
 
       <v-col
         class="mb-5"
         cols="12"
       >
-        <h2 class="headline font-weight-bold mb-3">
-          Bioinformatica
-        </h2>
+        <!-- texto de abajo -->
+            <p class="subheading font-weight-regular text-h5 ">
+              Si te interesa este tema y seguir aprendiendo sobre otros,
+              <br>te recomiendo seguirnos en nuestro <a
+                :href="'https://twitter.com/UnPocoDeCienci'"
+                class="subheading mx-3"
+                target="_blank"
+              >
+              <v-icon >{{twitter}}  </v-icon>
+                
+                Twitter
+              </a>
+
+            </p>
 
         <!-- <v-row justify="center">
           <a
@@ -269,16 +278,18 @@
     name: 'HelloWorld',
 
     data: () => ({
-      palabras:["Palabra 1","Palabra 2"],
-      words:["bioinformatica","genoma"],
-      definiciones:["Sinónimo biología computacional, informática biológica.","Es el conjunto de instrucciones genéticas que se encuentra en una célula"],
+      palabras:["Palabra 1","Palabra 2","Palabra 3","Palabra 4"],
+      words:["bioinformatica","genoma","LANGEBIO", "blockchain"],
+      definiciones:["Sinónimo biología computacional, informática biológica.","Es el conjunto de instrucciones genéticas que se encuentra en una célula",
+      "Laboratorio donde se descubrio el genoma del maíz", "Es una de las nuevas implementaciones en la verificación de genomas"],
       posicion:0,
       icons:[mdiTwitter],
+      twitter:mdiTwitter,
       word:[" "," "," "," "," "," "," "," "," "," "," "," "," "," "],
       trueWord:["b","i","o","i","n","f","o","r","m","a","t","i","c","a"],
       letra:"",
       letras:[],
-      foto:'ahorcado5.jpg',
+      foto:'ahorcadoNuevo5.png',
       intentosRestantes:5,
       selectedItem: 0,
       items: [
@@ -290,6 +301,7 @@
       ganarDialog:false,
       perder:false,
       perderDialog:false,
+      tutorial:true,
     }),
     methods: {
       checarLetra(){
@@ -310,12 +322,12 @@
         
         if(!correcto){
           this.$data.intentosRestantes=this.$data.intentosRestantes-1
-          this.$data.foto='ahorcado'+this.$data.intentosRestantes+'.jpg'
+          this.$data.foto='ahorcadoNuevo'+this.$data.intentosRestantes+'.png'
         }
         
         if(this.$data.intentosRestantes>0){
-          this.$data.foto='ahorcado'+(this.$data.intentosRestantes-1)+'.jpg'
-          this.$data.foto='ahorcado'+this.$data.intentosRestantes+'.jpg'
+          this.$data.foto='ahorcadoNuevo'+(this.$data.intentosRestantes-1)+'.png'
+          this.$data.foto='ahorcadoNuevo'+this.$data.intentosRestantes+'.png'
         }else{
            this.$data.perder=true;
            this.$data.perderDialog=true;
@@ -324,6 +336,7 @@
         if(JSON.stringify(this.$data.word) === JSON.stringify(this.$data.trueWord) ){
           this.$data.ganar=true;
           this.$data.ganarDialog=true;
+          this.$data.palabras[this.$data.posicion]=this.$data.words[this.$data.posicion];
         }
         this.$data.letra="";
 
@@ -341,7 +354,7 @@
         this.$data.word=temp;
 
         this.$data.intentosRestantes=5;
-        this.$data.foto='ahorcado'+this.$data.intentosRestantes+'.jpg'
+        this.$data.foto='ahorcadoNuevo'+this.$data.intentosRestantes+'.png'
         this.$data.letras=[]
         this.$data.ganar=false;
         this.$data.perder=false;
@@ -360,7 +373,7 @@
         this.$data.trueWord=trueWord;
         this.$data.word=temp;
         this.$data.intentosRestantes=5;
-        this.$data.foto='ahorcado'+this.$data.intentosRestantes+'.jpg'
+        this.$data.foto='ahorcadoNuevo'+this.$data.intentosRestantes+'.png'
         this.$data.letras=[]
         this.$data.ganar=false;
         this.$data.perder=false;
@@ -369,6 +382,8 @@
 
        }
     },
+    components: {
+    }
   })
 </script>
 <style scoped>
