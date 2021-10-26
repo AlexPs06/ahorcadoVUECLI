@@ -106,7 +106,6 @@
   <!-- Juego del ahorcado -->
    <v-sheet class="text-center"  color="#E0E1D7" elevation="24" width="80%" height="100%"   style="max-height: 100%;  "  >
       <v-col cols="12">
-          <!-- :src="require('../assets/'{{foto}}'.jpg')" -->
           <!-- Imagen de que se muere -->
         <v-img
         :src="require('../assets/'+foto)"
@@ -120,7 +119,6 @@
       <v-col class="mb-4">
         <v-row >
         <v-col class="mb-4"> 
-           <!-- <v-card max-height="60" max-width="200" > -->
       
             <v-text-field
                 color="teal lighten-1"
@@ -131,7 +129,6 @@
                 v-model="letra"
               >
               </v-text-field >
-           <!-- </v-card> -->
         </v-col>
 
           <v-col class="mb-4">
@@ -168,17 +165,17 @@
          
                 
 
-          <v-card v-if="word[i] == trueWord[i]" color="green">
-          <v-card-title  > {{ trueWord[i]}} </v-card-title>
+          <v-card  v-if="word[i] == trueWord[i]" color="green">
+          <v-card-title class="text-h3" > {{ trueWord[i]}} </v-card-title>
 
           </v-card>
 
           <v-card v-else-if=" intentosRestantes==0 "  color="red">
-          <v-card-title  > {{ trueWord[i]}} </v-card-title>
+          <v-card-title class="text-h3"  > {{ trueWord[i]}} </v-card-title>
           </v-card>
 
-          <v-card height="65" v-else-if="word[i] == ' ' "  color="#9C9702">
-          <v-card-title  >  </v-card-title>
+          <v-card  v-else-if="word[i] == ' ' "  color="#9C9702">
+          <v-card-title class="text-h3" ><br>  </v-card-title>
           </v-card>
 
           
@@ -250,24 +247,13 @@
 
             </p>
 
-        <!-- <v-row justify="center">
-          <a
-            v-for="(eco, i) in ecosystem"
-            :key="i"
-            :href="eco.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ eco.text }}
-          </a>
-        </v-row> -->
+ 
 
       </v-col>
       </v-sheet>
 
     </v-row>
   </v-container>
-    <!-- </v-parallax> -->
 
 </template>
 

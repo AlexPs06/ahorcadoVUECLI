@@ -3,10 +3,11 @@
        transition="dialog-bottom-transition"
         v-model="tutorial"
         max-width="100%"
+         
         persistent
       >
      
-        <v-carousel show-arrows-on-hover v-model="model" :cycle="false">
+        <v-carousel hide-delimiters show-arrows-on-hover v-model="model" :cycle="false">
 
             <template v-slot:prev="{ on, attrs }">
                 <v-btn
@@ -83,19 +84,20 @@
                     justify="center"
                     >
                         <div class="text-h2 ">
-                            <v-card class="text-center">
-                                <v-toolbar
-                                color=" black--text text-h5 grey lighten-2"
+                            
+                            <v-card max-width="600" class="text-center">
+                               
+                                <v-toolbar color=" black--text text-h5 grey lighten-2"
                                 dark
-                                >
-                                Primero 
-                                </v-toolbar>
+                                > Primero </v-toolbar>
+                                
                                 <v-card-text class="black--text text-h6">
                                     Selecciona la palabra que desees de la lista, recuerda que la respuesta a estas palabras estan ocultas.
                                     
 
                                     <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  -->
                                 </v-card-text>
+                                
                                 <v-card-actions class="justify-end">
                                 <v-btn
                                     text
@@ -103,23 +105,36 @@
                                 >Close </v-btn>
                                 </v-card-actions>
                             </v-card>
+                            
                         </div>
+                         <v-sheet class="ml-4 text-center fill-height"  :color="colors[1]"     style="max-height: 100%;  "  >
+                               <v-img
+                                :src="require('../assets/lista.png')"
+                                contain
+                                height="100%"
+                                />
+                         </v-sheet>
                     </v-row>
+                     
+                  
+
                 </v-sheet>
             </v-carousel-item>
-            <v-carousel-item >
+            <v-carousel-item  fluid >
                 <v-sheet
+                     
                     :color="colors[2]"
                     height="100%"
                     tile
                 >
                     <v-row
+                    
                     class="fill-height"
                     align="center"
                     justify="center"
                     >
                         <div class="text-h2 ">
-                            <v-card class="text-center">
+                            <v-card max-width="600" class="text-center">
                                 <v-toolbar
                                 color=" black--text text-h5 grey lighten-2"
                                 dark
@@ -140,6 +155,13 @@
                                 </v-card-actions>
                             </v-card>
                         </div>
+                        <v-sheet class="ml-4  fill-height"  :color="colors[2]"  width="33%"   style="max-height: 100%;  "  >
+                               <v-img
+                                :src="require('../assets/pista.png')"
+                                contain
+                                height="100%"
+                                />
+                         </v-sheet>
                     </v-row>
                 </v-sheet>
             </v-carousel-item>
@@ -157,7 +179,7 @@
                     justify="center"
                     >
                         <div class="text-h2 ">
-                            <v-card class="text-center">
+                            <v-card max-width="600" class="text-center">
                                 <v-toolbar
                                 color=" black--text text-h5 grey lighten-2"
                                 dark
@@ -165,7 +187,7 @@
                                 Tercero 
                                 </v-toolbar>
                                 <v-card-text class="black--text text-h6">
-                                    Ingresa una de las letras que creas que contenga la palabra en el recuadro y dale click al boton de comprobar
+                                    Ingresa una de las letras que creas que contenga la palabra  en el recuadro y dale click al boton de comprobar
                                     
 
                                     <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  -->
@@ -178,6 +200,13 @@
                                 </v-card-actions>
                             </v-card>
                         </div>
+                        <v-sheet class="ml-4 text-center fill-height"  :color="colors[3]"     width="40%" style="max-height: 100%;  "  >
+                               <v-img
+                                :src="require('../assets/introducir.png')"
+                                contain
+                                height="100%"
+                                />
+                         </v-sheet>
                     </v-row>
                 </v-sheet>
             </v-carousel-item>
@@ -194,7 +223,7 @@
                     justify="center"
                     >
                         <div class="text-h2 ">
-                            <v-card class="text-center">
+                            <v-card  class="text-center" max-width="600">
                                 <v-toolbar
                                 color=" black--text text-h5 grey lighten-2"
                                 dark
@@ -202,7 +231,7 @@
                                 Cuarto 
                                 </v-toolbar>
                                 <v-card-text class="black--text text-h6">
-                                    Si tu letra esta en la palabra esta se iluminara en verde, en caso contrario avanzara el dibujo, recuerda no dejes que se complete <br>
+                                    Si tu letra esta en la palabra esta se iluminara en verde, en caso contrario avanzara el dibujo, recuerda no dejes que se complete 
                                     o perderas el juego.
                                     
 
@@ -216,6 +245,13 @@
                                 </v-card-actions>
                             </v-card>
                         </div>
+                        <v-sheet class="ml-4 text-center fill-height"  :color="colors[4]"  width="40%"   style="max-height: 100%;  "  >
+                               <v-img
+                                :src="require('../assets/correcto.png')"
+                                contain
+                                height="100%"
+                                />
+                         </v-sheet>
                     </v-row>
                 </v-sheet>
             </v-carousel-item>
@@ -232,7 +268,7 @@
                     justify="center"
                     >
                         <div class="text-h2 ">
-                            <v-card class="text-center">
+                            <v-card max-width="600" class="text-center">
                                 <v-toolbar
                                 color=" black--text text-h5 grey lighten-2"
                                 dark
@@ -253,6 +289,13 @@
                                 </v-card-actions>
                             </v-card>
                         </div>
+                        <v-sheet class="ml-4 text-center fill-height"  :color="colors[5]"  width="40%"   style="max-height: 100%;  "  >
+                               <v-img
+                                :src="require('../assets/revelado.png')"
+                                contain
+                                height="100%"
+                                />
+                         </v-sheet>
                     </v-row>
                 </v-sheet>
             </v-carousel-item>
