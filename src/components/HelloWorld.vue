@@ -21,14 +21,22 @@
         persistent
       >
        <v-card class="text-center">
+            <v-img
+              :src="require('../assets/'+imagenesVictoria[posicion])"
+                contain
+                height="100%"
+                max-height="600"
+              />
+
             <v-toolbar
-            
+              class="text-h5"
               color="green"
               dark
             >Felicidades has ganado</v-toolbar>
-            <v-card-text>
+            <v-card-text align="justify" class="black-text text-h6">
+              {{victoria[posicion]}}
             </v-card-text>
-            <v-card-actions class="justify-end">
+            <v-card-actions class="justify-end ">
               <v-btn
                 text
                 @click="ganarDialog = false"
@@ -50,12 +58,22 @@
         persistent
       >
        <v-card class="text-center">
+
+                <v-img
+            :src="require('../assets/'+imagenesVictoria[posicion])"
+              class="my-3"
+              contain
+              height="100%"
+              max-height="600"
+            />
             <v-toolbar
             
               color="red"
               dark
-            >Una derrota no significa el final</v-toolbar>
-            <v-card-text>
+              class="text-h5"
+            >Mejor suerte para la proxima</v-toolbar>
+            <v-card-text align="justify" class="black-text text-h6">
+              {{victoria[posicion]}}
             </v-card-text>
             <v-card-actions class="justify-end">
               <v-btn
@@ -125,7 +143,7 @@
                 class="palabra white--text"
                 placeholder="Introduce la letra"
                 solo
-                x-large="true"
+                x-large
                 v-model="letra"
               >
               </v-text-field >
@@ -134,7 +152,7 @@
           <v-col class="mb-4">
           <v-btn 
           class="white--text"
-          x-large="true"
+          x-large
           color="blue darken-4"
           v-on:click="checarLetra()"
           :disabled="intentosRestantes==0 || ganar==true "
@@ -146,7 +164,7 @@
         <v-col class="mb-4">
           <v-btn 
           class="white--text"
-          x-large="true"
+          x-large
           color="red darken-4"
           v-on:click="reiniciar()"
           elevation="2" >
@@ -156,7 +174,7 @@
         
         </v-row>
         <!-- palabras dinamicas -->
-        <p class="display-2 font-weight-bold text-h3 mb-lg-10 mb-md-10" > {{definiciones[posicion]  }} </p>
+        <p class="display-2 font-weight-bold text-h3 mb-lg-10 mb-md-10" >Pista: {{definiciones[posicion]  }} </p>
         <h1 class="display-2 font-weight-bold ma-4">
          
           <v-row>
@@ -268,11 +286,22 @@
       words:["bioinformatica","genoma","LANGEBIO", "blockchain"],
       definiciones:["Sinónimo biología computacional, informática biológica.","Es el conjunto de instrucciones genéticas que se encuentra en una célula",
       "Laboratorio donde se descubrio el genoma del maíz", "Es una de las nuevas implementaciones en la verificación de genomas"],
+      victoria:["La bioinformatica tambien conocida como biología computacional  permite investigar, desarrollar y aplicar herramientas informáticas y "
+                + "computacionales para mejorar el manejo de datos biológicos.",
+        
+                "Se conoce hoy en día que los genomas del humano contiene aproximadamente 3,1 mil millones de bases de la secuencia de ADN",
+
+              "LANGEBIO es el laboratorio donde se secuencio el genoma del maíz por primera vez en el proyecto ZEA-2006 con la colaboracion del Dr. Luis Estrella",
+
+              "El blockchain es una de las nuevas formas en las cuales se esta comprobando que el genoma encontrado sea el correcto"
+      ],
+      imagenesVictoria:["bioinformatica.jpg","genoma.jpg","LANGEBIO.jpg","blockchain.jpg"],
       posicion:0,
       icons:[mdiTwitter],
       twitter:mdiTwitter,
       word:[" "," "," "," "," "," "," "," "," "," "," "," "," "," "],
       trueWord:["b","i","o","i","n","f","o","r","m","a","t","i","c","a"],
+      // word:["b","i","o","i","n","f","o","r","m","a","t","i","c","a"],
       letra:"",
       letras:[],
       foto:'ahorcadoNuevo5.png',

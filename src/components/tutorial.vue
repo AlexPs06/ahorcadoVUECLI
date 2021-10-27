@@ -157,7 +157,7 @@
                         </div>
                         <v-sheet class="ml-4  fill-height"  :color="colors[2]"  width="33%"   style="max-height: 100%;  "  >
                                <v-img
-                                :src="require('../assets/pista.png')"
+                                :src="require('../assets/pista2.png')"
                                 contain
                                 height="100%"
                                 />
